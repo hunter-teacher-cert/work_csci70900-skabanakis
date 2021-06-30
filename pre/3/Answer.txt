@@ -1,0 +1,39 @@
+1. 
+No, I wug.
+You wugga wug.
+I wug.
+
+2.
+   main
+      zoop
+        baffle
+          ping
+		baffle
+			ping
+	 baffle
+		ping
+
+3. If I was to add baffle(); at the end of the ping(); method it would constantly go into a forever loop.  This is because it would constantly go back and forth between the 2 methods and never make it past that.
+
+
+public static void zoop() {
+    baffle(); 3
+    System.out.print("You wugga "); 7
+    baffle();8
+}
+
+public static void main(String[] args) {
+    System.out.print("No, I "); 1
+    zoop(); 2
+    System.out.print("I "); 12
+    baffle(); 13
+}
+
+public static void baffle() {
+    System.out.print("wug"); 4 9 14
+    ping(); 5 10 15
+}
+
+public static void ping() {
+    System.out.println("."); 6 11 16
+}
