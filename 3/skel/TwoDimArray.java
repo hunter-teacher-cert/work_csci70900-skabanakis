@@ -75,7 +75,14 @@ public class TwoDimArray
   //return sum of all items on row r of 2D integer array a
   // using a FOREACH loop
   public static int sumRow2( int r, int[][] m ) {
-    return 0;
+    int sumRowTotal =0;
+	for (int [] row:m){
+		for( int element: row){
+			sumRowTotal = sumRowTotal + element;
+
+		}
+	}
+	return sumRowTotal;
   }
 
 
