@@ -3,7 +3,13 @@ import java.util.*;
 
 public class Craps {
 	public static void main(String[] args) {
-		System.out.print(round());
+		int rounds =3;
+		
+    for(int i=0;i<rounds;i++) {
+      System.out.println ("This is round "+ i);
+			  
+      round();
+    }
 	}	
 	public static int roll (int num){
 		return (int) (Math.random() * (num - 1)) + 1;
@@ -29,10 +35,27 @@ public class Craps {
 			return true;	
 		}
 		else{
-			System.out.println ("\n Score =" + currshoot);
-			System.out.println("You received points");
+        int firstPoint =currshoot;
+        System.out.println ("\n Score =" + currshoot);
+			  System.out.println("You received points");
+      boolean contRoll= true;
+      while(contRoll==true){
+        currshoot= shoot(2,6);
+        if(currshoot==firstPoint){
+          System.out.println("You rolled your point! You win!");
+          contRoll=false;
+        }else if(currshoot==7){
+          System.out.println("You Loose");
+          }
+          else{
+            System.out.println ("\n Score =" + currshoot);
+			    System.out.println("You received points, roll again");
+          }
+        }
+        
 			return true;
-		}	
+      }
+			
 		
 	}	
 }	
