@@ -45,6 +45,7 @@ public class Cgol
   //set cell (r,c) to val
   public static void setCell(char[][] board, int r, int c, char val){
     board[r][c] = val;
+    
   }
 
 
@@ -79,16 +80,6 @@ public class Cgol
     //System.out.println("["+r+"]" +"["+c+"]" + "=" + livingNeighbors);
     return livingNeighbors;
   }
-    /**
-    int count=0;
-    for (row=r-1;row<= r+1; row++){
-      for(col=c -1;col<=c+1;col++){
-        if (row>=0 && row <r && col>= 0 && col<c)
-      }
-    }
-    **/
-   
-
 
   /**
      precond: given a board and a cell
@@ -120,7 +111,7 @@ public static char[][] copyBoard (char[][] oldBoard){
   char[][] newBoard = new char[oldBoard.length][oldBoard[0].length];
     for (int i = 0; i < newBoard.length  ; i ++) {
       for (int j = 0; j < newBoard[0].length; j++){
-        newBoard[i][j] = oldBoard[i][j];
+        newBoard[i][j] = oldBoard[i][j]; //stores the old board cells in the new board at the same place
       } 
     }
     return newBoard;
@@ -163,30 +154,49 @@ public static boolean isAlive(char[][] board, int r, int c){
       int numAlive = 0;
       for (int row = 0; row < board.length; row++) {
         for (int col = 0; col < board[0].length; col ++) {
-          
+          if(isAlive(board,row,col)){ //if we find any cell that is alive, the game is not over
+            return false;
+          }
         }
-      } 
-    return false;
+      }  
+    return true; //if we went through all cells and none are alive then game is over
   }
 
-  public static void main( String[] args )
-  {
+  public static void main( String[] args ) {
     Scanner in = new Scanner(System.in);
+    System.out.print("Welcome to the Game of Life! How long would you like your board? "); //use the variable twice for a square grid
+    int size = in.nextInt();
+
+    //board before the positions are in play
+    char[][] board;
+    board = createNewBoard(size,size);
+
+    //prompt hpw many cell inputs user would like
+    System.out.print("How many living cells would you like to start with? ");
+    int live = in.nextInt();
+
+    //This needs to repeat for number of cells
+    for(int i = 0; i < live; i++){
+      System.out.println("Where would you like to put the living cell? Choose a row and a column. "); //use x for row and y for column for now
+      System.out.print("row: ");
+      int x = in.nextInt();
+      System.out.print("column: ");
+      int y = in.nextInt();
+      setCell(board, x, y, 'L');
+    }
+
+   
+
     System.out.print("How many rounds would you like to play? ");
     int rounds = in.nextInt();
 
 
-    //board before the positions are in play
-    char[][] board;
-    board = createNewBoard(7,7);
-    
     //breathe life into some cells:
     //setCell(board, 0, 0, 'L');
     //setCell(board, 0, 1, 'L');
     //setCell(board, 1, 0, 'L');
-    setCell(board, 3, 2, 'L');
-    setCell(board, 4, 2, 'L');
-    setCell(board, 5, 2, 'L');
+    //setCell(board, x, y, 'L');
+
 
     printBoard(board);
 
@@ -196,10 +206,13 @@ public static boolean isAlive(char[][] board, int r, int c){
       board = generateNextBoard(board);
       System.out.println("Generation: " + (i+1));
       printBoard(board);
+      if(isGameOver(board)){
+        System.out.println("Your populations all died. GAME OVER.");
+        break;
+      }
       i++;
     }
-   /** System.out.println(countNeighbours(board, 3, 3));
-    System.out.println("Next gen cell for 3,3: " + getNextGenCell(board,3,3));**/
+
   
   //check to see the amount of live neighbors based on the coordinates. This is a check
    /** for (int row = 0; row < board.length; row++) {
