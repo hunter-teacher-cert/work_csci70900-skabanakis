@@ -3,6 +3,8 @@ import java.util.*;
 
 
 /**
+authors- Mlaks23, Skabanakis,Vmiller77,
+
    The Rules of Life:
    Survivals:
    * A cell with 2 or 3 living neighbours will survive for the next generation.
@@ -31,7 +33,6 @@ public class Cgol
 
   //print the board to the terminal
   public static void printBoard(char[][] board) {
-    System.out.println("Updated Board:");
     for (int row = 0; row < board.length; row++) {
 	    for (int col = 0; col < board[0].length; col ++) {
 		    System.out.print(board[row][col] + " ");
@@ -50,32 +51,32 @@ public class Cgol
   //return number of living neigbours of board[r][c]
   public static int countNeighbours(char[][] board, int r, int c) {
     int livingNeighbors = 0;
-    //TODO: fix edge cases
-    if(board[r-1][c-1] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+   
+    if(isAlive(board,r-1,c-1)){
+      livingNeighbors++;
     }
-    if(board[r-1][c] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r-1,c)){
+      livingNeighbors++;
     }
-    if(board[r-1][c+1] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r-1,c+1)){
+      livingNeighbors++;
     }
-    if(board[r][c-1] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r,c-1)){
+      livingNeighbors++;
     }
-    if(board[r][c+1] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r,c+1)){
+      livingNeighbors++;
     }
-    if(board[r+1][c-1] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r+1,c-1)){
+      livingNeighbors++;
     }
-    if(board[r+1][c] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r+1,c)){
+      livingNeighbors++;
     }
-    if(board[r+1][c+1] == 'L'){
-      livingNeighbors = livingNeighbors + 1;
+    if(isAlive(board,r+1,c+1)){
+      livingNeighbors++;
     }
-    System.out.println("["+r+"]" +"["+c+"]" + "=" + livingNeighbors);
+    //System.out.println("["+r+"]" +"["+c+"]" + "=" + livingNeighbors);
     return livingNeighbors;
   }
     /**
@@ -114,51 +115,101 @@ public class Cgol
     }
   }
 
-//tells us if the cell is alive
-  public static boolean isAlive(char[][] board,int r, int c){
-    if(board[r][c] == 'L'){
-      return true;
-    }else{
-      return false;
+public static char[][] copyBoard (char[][] oldBoard){
+  
+  char[][] newBoard = new char[oldBoard.length][oldBoard[0].length];
+    for (int i = 0; i < newBoard.length  ; i ++) {
+      for (int j = 0; j < newBoard[0].length; j++){
+        newBoard[i][j] = oldBoard[i][j];
+      } 
     }
+    return newBoard;
+}
+//tells us if the cell is alive
+public static boolean isAlive(char[][] board, int r, int c){
+    //check to see if cell exists based on r and c
+    if(r > board.length - 1 || c > board[0].length -1 || r < 0 || c < 0){
+        return false;
+      }else{ //cell exists - check if living
+        if(board[r][c] == 'L'){
+          return true;
+        }else{
+          return false;
+        }
+      }
   }
 
-  // //generate new board representing next generation
- // // public static char[][] generateNextBoard(char[][] board) {
+  //generate new board representing next generation
+  public static char[][] generateNextBoard(char[][] board) {
+    //copy board to change
+    char[][] newBoard = copyBoard(board);
+    
+    //go through the old board to change the new board
+    for (int row = 0; row < board.length; row++) {
+        for (int col = 0; col < board[0].length; col ++) {
+          //get the nextGenCell for this cell at row,col
+           char nextGenCellChar = getNextGenCell(board, row, col); 
 
-  // }
+           //setting the cell of the new board
+           setCell(newBoard,row,col,nextGenCellChar);
+        }
+    }
+    return newBoard;
+    
+  }
 
+  public static boolean isGameOver(char[][] board){
+      //when everything is dead then game over
+      int numAlive = 0;
+      for (int row = 0; row < board.length; row++) {
+        for (int col = 0; col < board[0].length; col ++) {
+          
+        }
+      } 
+    return false;
+  }
 
   public static void main( String[] args )
   {
+    Scanner in = new Scanner(System.in);
+    System.out.print("How many rounds would you like to play? ");
+    int rounds = in.nextInt();
+
+
     //board before the positions are in play
-    System.out.println("dead board");
     char[][] board;
     board = createNewBoard(7,7);
-    //printBoard(board);
-    
     
     //breathe life into some cells:
-    setCell(board, 0, 0, 'L');
-    setCell(board, 0, 1, 'L');
-    setCell(board, 1, 0, 'L');
-    setCell(board, 2, 2, 'L');
-    setCell(board, 4, 4, 'L');
-    setCell(board, 3, 3, 'L');
+    //setCell(board, 0, 0, 'L');
+    //setCell(board, 0, 1, 'L');
+    //setCell(board, 1, 0, 'L');
+    setCell(board, 3, 2, 'L');
+    setCell(board, 4, 2, 'L');
+    setCell(board, 5, 2, 'L');
 
-    System.out.println("The number of neighbors of row: " + 3 + " and col: " + 3);
-    System.out.println(countNeighbours(board, 3, 3));
-    System.out.println("Next gen cell for 3,3: " + getNextGenCell(board,3,3));
-  
-  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    for (int row = 0; row < board.length; row++) {
-        for (int col = 0; col < board[0].length; col ++) {
-          System.out.print("The number of neighbors of row: " + row + "and col: " + col);
-          System.out.println(countNeighbours(board, row, col));
-        }
-    }
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     printBoard(board);
+
+
+    int i = 0;
+    while(i < rounds){
+      board = generateNextBoard(board);
+      System.out.println("Generation: " + (i+1));
+      printBoard(board);
+      i++;
+    }
+   /** System.out.println(countNeighbours(board, 3, 3));
+    System.out.println("Next gen cell for 3,3: " + getNextGenCell(board,3,3));**/
+  
+  //check to see the amount of live neighbors based on the coordinates. This is a check
+   /** for (int row = 0; row < board.length; row++) {
+        for (int col = 0; col < board[0].length; col ++) {
+          countNeighbours(board, row, col); 
+          
+        }
+    }**/
+    
+    
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // TASK:
