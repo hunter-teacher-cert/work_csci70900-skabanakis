@@ -14,7 +14,7 @@ public class TwoDimArray
   // using a FOR loop
   public static void print1( int[][] a ) {
    for(int row = 0; row < a.length; row++){ //changed i to row
-     for(int col = 0; col < a[0].length; col++){ //changes j to col
+     for(int col = 0; col < a[row].length; col++){ //changes j to col
        System.out.print(a[row][col]); //print out each element
      }
      System.out.println(""); //print a line for spacing
@@ -40,7 +40,7 @@ public class TwoDimArray
 	  int value =0;
     for(int row =0; row<a.length; row++)
     {
-      for(int col =0; col<a[0].length;col++)
+      for(int col =0; col<a[row].length;col++)
       {
         value =a[row][col];
         total= total +value; //adding each element to our total
@@ -115,5 +115,3 @@ public class TwoDimArray
   }//end main()
 
 }//end class TwoDimArray
-
-
