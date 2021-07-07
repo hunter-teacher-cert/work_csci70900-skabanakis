@@ -44,13 +44,41 @@ public class Time {
         this.hour, this.minute, this.second);
   }
 
-   //Create a method to compare two times
+  //Create a method to compare two times
   public boolean equals(Time that){
     return this.hour == that.hour //this.hour and that.hour are class variables
         && this.minute == that.minute
         && this.second == that.second;
   }
 
+  //create a static method to add two Time objects together
+  public static Time add(Time t1, Time t2){
+    Time sum = new Time();
+    sum.hour = t1.hour + t2.hour;
+    sum.minute = t1.minute + t2.minute;
+    sum.second = t1.second + t2.second;
+    return sum;
+  }
+
+  //create an instance method to add two Time objects together
+  public Time add(Time t2) {
+    Time sum = new Time();
+    sum.hour = this.hour + t2.hour;
+    sum.minute = this.minute + t2.minute;
+    sum.second = this.second + t2.second;
+
+/*
+this is because we wanted to catch that if the minutes are greater than 60 then it will add an hour or if if the seconds are greater than 60 it will add a minutes
+sum.second = sum.second % 60;
+sum.minute = sum.minute+sum.second % 60;
+sum.hour = sum.minute % 60;
+sum.minute = sum.minute % 60;
+*/
+
+    return sum;
+
+
+  }
 }//end class
 
 // Your driver file should contain code to (in suggested development order)
