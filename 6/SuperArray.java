@@ -53,6 +53,29 @@ public class SuperArray
     numberElements++;  
   } //end add()
    
+   public void add (int index, int value){
+	 //test to see if we need to grow, then grow
+	 //check our grow method
+	  if (numberElements == data.length){ // when the array is currently full/max - extend another index and element
+     grow();
+   }
+   for(int i = numberElements; i > index; i--){ // starting at the last meaningful data point in array(15), moving left
+     data[i] = data[i - 1]; // current now equals previous, i.e. shift each data point one index to the right
+   }
+   data[index] = value;// replace the value at the chosen index with the new value
+   numberElements++; // increment numberElements
+ }
+   
+   
+   //remove method
+   public void remove(int i){
+	   for (int j=i; j< this.data.length -1; j++){
+		   this.data[j] = this.data[j+1];
+	   }
+	   this.numberElements--;
+   }
+   
+   //setters - allows modifying instatce vars outside of class
 
   
   
@@ -84,20 +107,43 @@ public class SuperArray
       return false;
     }
   }
-/*
+
 //3rd task to complete
   public int get(int index)
   {
-
+	if (index < numberElements){
+		System.out.println("The " + index +" value is " + this.data[index] );
+	}
+	if(index >= numberElements){
+		System.out.println("This" + index + "does not have a value yet");
+	
+}
+	return 0;
   }
 
 //2nd complete this method
   public String toString()
   {
-    System.out.println();
+    String s  =" ";
+	for (int i= 0; i < numberElements; i++){
+		s = s + data[i] + ",";
+	}
+	return s;
   }//end toString()
+  private void grow()
+  {
+	  int[] newdata =new int[this.data.length +20];
+	  
+	  // copy over all the elements from the old array to the new one
+	  for (int i=0; i< this.data.length; i++){
+		  
+	  }// for loop
+	  
+    
 
+  }//end grow()
 
+/*
   //helper method for debugging/development phase
   public String debug()
   {
@@ -110,18 +156,21 @@ public class SuperArray
     s = s + "\n";
     return s;
   }//end debug()
-
-
-  private void grow()
-  {
-    // create a new array with extra space
+  //grow method Q&A
+// create a new array with extra space
     // Q: How did you decide how much to increase capacity by?
 
-    // copy over all the elements from the old array to the new one
+    
 
     // point data to the new array
     // Q: How does this look when illustrated using encapsulation diagram?
 
-  }//end grow()
+ 
+  //setters - allows modifying instatce vars outside of class
+  public int setter(int val, int index){
+	  
+  }// end setter
+  
+  
 */
 }//end class
