@@ -58,12 +58,10 @@ public class SortDemo{
     //this method is finding the smallest index based on the parameter index number that we provoid. It will include that index #  and go to the right. It will NOT include any values prior to that index number. 
     public int findSmallestIndex(int start){
 	    int smallIndex = start;
-
-	    // start a variable at the one after start
+      // start a variable at the one after start
 	   
 
 	    // loop from that variable to end and update smallIndex as needed
-	    // your code here
       for (int i = start+1; i < data.size(); i++){
         if (data.get(smallIndex) < data.get(i)) {
           smallIndex = smallIndex;
@@ -74,26 +72,31 @@ public class SortDemo{
       }
   
 	    return smallIndex;
+      //if repeats of smallest number occur, will return last instance of smallest number
 
     }// end of findSmallestIndex
-/*
+
   public int get(int index) {
     // define get()
+    return this.data.get(index);
   }
-*/
-    public void sort(){
-	int i;
-	for (i=0;i < data.size()-1; i++){
+
+  public void sort(){
+  	int smallestIndex;
+    
+	  for (int j=0;j < data.size()-1; j++){
 	    // find the smallet index from i to end
 	    // your code here
-
+      smallestIndex = findSmallestIndex(j);
+      int valSmallIndex = data.get(smallestIndex);
+      data.set(smallestIndex, data.get(j));
+      data.set(j, valSmallIndex);
 	    // swap the item at that index and i
 	    // your code here
+      
+      }
 
-
-	}
-    }
-
+  }
 
 
     /* If you finish the lab early you can get started on this */
