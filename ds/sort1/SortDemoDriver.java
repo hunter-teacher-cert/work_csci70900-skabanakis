@@ -26,10 +26,18 @@ public class SortDemoDriver {
 
 	/* part 3 test lines */
 	
-	  System.out.println(sd);
-	  sd.sort();
-    System.out.print("Sorted list: ");
-	  System.out.println(sd);
+	  //System.out.println(sd);
+	  //sd.sort();
+    //System.out.print("Sorted list: ");
+	  //System.out.println(sd);
 	
-    }
+    
+	System.out.println("Index of value 5: " + sd2.linearSearch(5));
+    System.out.println("Index of value 6: " + sd2.linearSearch(6));
+    System.out.println("Index of value 7: " + sd2.linearSearch(7));
+    System.out.println("Index of value 8: " + sd2.linearSearch(8));
+    System.out.println("Index of value 9: " + sd2.linearSearch(9));
+    
+    
+}
 }
