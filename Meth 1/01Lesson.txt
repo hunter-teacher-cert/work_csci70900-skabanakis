@@ -1,0 +1,58 @@
+Lesson Objective: 
+------------------------------------------------------------
+Variables & scanner
+
+
+
+
+Aim: 
+------------------------------------------------------------
+How are variables important within a program?
+
+
+Warm up:
+------------------------------------------------------------
+-Break the students up into groups of 3-4 students.
+-Give each group 10 animals and 5 cups.
+-Tell them that each item needs a home and they have to name the home of each item.
+
+
+
+
+
+Lesson Content:
+------------------------------------------------------------
+-Explain in detail what is a variable and how it hold a value.
+-In the warm up the cut was the home to the animals, and some help 1 anaimal while other could hold more.
+-Needless to say that a variable can only hold 1 value.
+-Go over how to declare a variable 
+-Ask them to look at their home name, and have them change the name of the house.
+-Have them write out how to declare the variable on paper  using their house names & the 
+# of animals in each house. ex: int pen=3;
+-(depending on the code you are teaching ) explain the different types of variables you can declare
+- for scratch/Hatch you can put all variables in the same block where as in python and java they have to be declared differently
+- String,Int, double.
+-Then we would walk even deeper on how to assign a new value to that variable.
+- Have them take out 1 of the animals from a cup of their choice 
+- Then have them write what the new value is and sample how it would be reassigned.
+-Go over how to print out the different variables using concatination
+-introduce how to import a scanner and store user input into the variable.
+
+Before going on the activity,
+
+
+
+Lesson Activity:
+------------------------------------------------------------
+Requirements
+
+Create a Program to say something that prompts the user to input at least 3 different types of words. 
+Store these words and use them in three different sentences.
+Each sentence must be displayed.
+
+
+
+Closing:
+------------------------------------------------------------
+Exit ticket:
+Have students recap their code in their own words. In addition, to ask any additonal questions that they may have or confusion.
