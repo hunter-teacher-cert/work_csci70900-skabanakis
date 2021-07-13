@@ -23,9 +23,10 @@ Warm up:
 Lesson Content:
 ------------------------------------------------------------
 -Explain in detail what is a variable and how it hold a value.
--In the warm up the cut was the home to the animals, and some help 1 anaimal while other could hold more.
+-In the warm up the cut was the home to the animals, and some hold 1 anaimal while other could hold more.
 -Needless to say that a variable can only hold 1 value.
 -Go over how to declare a variable 
+- compare variable to algebra where the single letter to words
 -Ask them to look at their home name, and have them change the name of the house.
 -Have them write out how to declare the variable on paper  using their house names & the 
 # of animals in each house. ex: int pen=3;
