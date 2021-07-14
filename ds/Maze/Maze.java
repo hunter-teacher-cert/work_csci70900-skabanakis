@@ -7,7 +7,7 @@ public class Maze{
     private int rows = 25;
     private int cols = 85;
 
-    private String clearScreen="[0;0H\n";
+    private String clearScreen="^[[0;0H\n";
 
     private void delay(int n)
     {
@@ -24,9 +24,9 @@ public class Maze{
 	    int col = 0;
 
 	    for (row = 0; row < rows; row++){
-		for (col = 0; col < cols ; col++){
+			for (col = 0; col < cols ; col++){
 		    board[col][row] = ' ';
-		}
+			}
 	    }
 	    
 	
@@ -53,17 +53,47 @@ public class Maze{
     public String toString(){
 	int row,col;
 	String result = "";
-	for (row = 0; row < rows; row++){
-	    for (col = 0; col < cols; col++){
-		result = result + board[col][row];
-	    }
+		for (row = 0; row < rows; row++){
+			for (col = 0; col < cols; col++){
+			result = result + board[col][row];
+			}
 	    result = result +"\n";
 	}
 	return result;
     }
 
     public boolean solve(int col,int row){
-	return false;
+	boolean solved;
+	
+	System.out.println(clearScreen+this);
+	delay(100);
+	// BASE CASE 1 - solved
+	// if we found the exit we're done - return true
+	if (board[col][row]=='$')
+			       return true;
+
+	// BASE CASE 2 - dead end
+	// if we hit a wall or our path, we can't go further this
+	// way - return false
+	if (board[col][row]==' '
+	    || board[col][row]=='z'
+	    || board[col][row]=='.')
+	    return false;
+
+	// put ourselves in the maze
+	board[col][row]='z';
+	// RECURSIVE CALLS
+	// try all the spaces we can go to 
+	solved = solve(col+1,row);
+	if (!solved)
+	    solved = solve(col-1,row);
+	if (!solved)
+	    solved = solve(col,row+1);
+	if (!solved)
+	    solved = solve(col,row-1);
+	// since we're not done yet remove ourselves
+	board[col][row]='.';
+	return solved;
     }
 
     

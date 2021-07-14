@@ -11,7 +11,7 @@ public class Knights{
     private int rows = 5;
     private int cols = 5;
     private int size=5;
-    private String clearScreen="[0;0H\n";
+    private String clearScreen="^[[0;0H\n";
 
     private void delay(int n)
     {
@@ -65,12 +65,14 @@ public class Knights{
 	    }
 	    result = result +"\n";
 	}
+
 	return result;
     }
 
-    public boolean solve(int col,int row, int count){
+public boolean solve(int col,int row, int count){
+  
 	boolean solved = false;
-
+  System.out.println("**********This is the count: "+count);
 
 	// This should return true when we've solved the problem
 	// What should CHANGETHIS be?
@@ -78,7 +80,7 @@ public class Knights{
 	// here, when do we know when we're done?
 	// HINT: you have an nxn board and are done when you've visited
 	// every board location
-	if (count>CHANGETHIS){
+	if (count==(rows*cols)){
 	    System.out.println(this);
 	    return true;
 	}
@@ -88,16 +90,20 @@ public class Knights{
 	// change CHANGETHIS to the appropriate boolean
 	// HINT: we are tracking our moves in the board
 	// and also built that border of -1 values.
-	if (CHANGETHIS){
+	if (board[col][row] == -1){ //border
 	    return false;
 	}
+  if (board[col][row] > 0){ //places we have already visited
+	    return false;
+	}
+
 	
 	
 	// what do we put into the board
 	// Change CHANGETHIS
-	board[col][row]=CHANGETHIS;
+	board[col][row]=count;
 
-	delay(50);
+	delay(200);
 	System.out.println(clearScreen+this);
 
 
@@ -107,9 +113,28 @@ public class Knights{
 	// 1. The maze had only four calls.
 	// 2. The parameters for the call are a little different.
 	// Add the recursive calls here
-	
-
-	
+  solved = solve(col+1,row+2,count+1);
+	if(!solved){
+    solved = solve(col-1,row+2,count+1);
+  }
+  if(!solved){
+    solved = solve(col+1,row-2,count+1);
+  }
+  if(!solved){
+    solved = solve(col-1,row-2,count+1);
+  }
+  if(!solved){
+    solved = solve(col+2,row-1,count+1);
+  }
+	if(!solved){
+    solved = solve(col+2,row+1,count+1);
+  }
+  if(!solved){
+    solved = solve(col-2,row-1,count+1);
+  }
+  if(!solved){
+    solved = solve(col-2,row+1,count+1);
+  }
 
 	// Here we unset where we were for the backtracking
 	

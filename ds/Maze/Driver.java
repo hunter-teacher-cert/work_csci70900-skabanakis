@@ -14,6 +14,6 @@ public class Driver{
 	  solved = k.solve(1,1);
 	*/
 	Knights k = new Knights(5);
-	k.solve(2,2,1);
+	k.solve(2,5,1);
     }
 }
