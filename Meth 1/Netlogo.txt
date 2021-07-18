@@ -1,0 +1,17 @@
+I would introduce Netlogo when going over methods. 
+But I would also take into consideration what they are learning in science.
+
+This would help them to:
+	A- correlate computer science with another subject classroom
+	B- let them see how other subjects can be related / helpful in being able to explain difficult topics.
+Many of the programs/ games can be used in so many different types of classroom enviornment.
+
+I would fist model how NetLogo works, in the way that you can choose different programs and maniuplate how they run and start.
+I would also show them where they can find the code.
+
+I would then give them a sheet of questions to answer based on the program(s), and let them explore with a fellow classmate.
+
+I would have they write down which programs they looked at, what were the methods in each program and have them explain it to me.
+I think this would be helpful tool for not only for the students to get familiar with psuedeo code but also being able to explain it to someone who is not a CS person.
+
+I would then have them find a program related to what they are currently learning in science and have them tell me the correlation between the 2 conten.
