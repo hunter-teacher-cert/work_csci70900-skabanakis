@@ -1,0 +1,28 @@
+* Develop an unplugged activity for a CS concept that has been covered this summer in either Programming or Data Structures.
+  *  Describe your concept and activity in a text file (markdown preferred, not required) in your meth1 folder with the name 06_unplugged.
+
+//emma, alex, steph
+Functions Unplugged
+
+Students partner up and each person writes a function for their partner to run through. Use your creativity! Types of functions include: song lyrics, dance, teacher instructions, etc.
+
+For example, one student will write a dance function for their partner to act out each of the dance moves. The function could take in a parameter(s) for how many times certain dance moves are repeated.
+
+The teacher can call functions, and each pair of students performs a different function.
+Parameter dictates how many times the move is repeated.
+
+Teacher: 
+Call “TikTok dance function” three times
+Call “get water” function once
+Call “Erase board” function once
+Call “write on board” function twice
+Etc.
+Homework Assignment:  Write a function, and tomorrow you and your partner will act it out.
+
+Following up:
+
+Void Dance (int numberOfTimes)
+Repeat (numberOfTimes)
+{
+	
+}
