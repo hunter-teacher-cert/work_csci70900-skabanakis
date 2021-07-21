@@ -38,6 +38,7 @@ public class SortDemoDriver {
     System.out.println("Index of value 8: " + sd2.linearSearch(8));
     System.out.println("Index of value 9: " + sd2.linearSearch(9));
     
+	sd2.testMerge();
     
 }
 }
