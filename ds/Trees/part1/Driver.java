@@ -27,11 +27,14 @@ public class Driver {
 		t.insert(3);
 		t.insert(25);
 		
-		t.traverse();
+	
 
-		/*t.preorderTraverse();
+		System.out.println("Pre-Order Traverse:");
+		t.preorderTraverse();
+		System.out.println("Post-Order Traverse:");
 		t.postorderTraverse();
-		t.inorderTraverse();*/
+		System.out.println("In-Order Traverse:");
+		t.inorderTraverse();
 		
 	}
 }
