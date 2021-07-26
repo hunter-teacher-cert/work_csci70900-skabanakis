@@ -7,25 +7,62 @@ public class BSTree {
     public BSTree(){
 	root = null;
     }
-	private void traverse(TreeNode current){
-		if(current ==null){
-			return;
-			
-		}
-		//process the current node
-		System.out.print(current.getData()+ ",");
-		
-		traverse(current.getLeft());
-		traverse(current.getRight());
-		
-			
-	}//end of private traverse
 	
-	public void traverse(){
-		traverse(root);
-	}//end of traverse
+	public void delete(int key){
+
+	// if the tree is empty, nothing to delete
+	if (root==null){
+	    return;
+	}//end of if
 	
-    private void preorderTraverse(TreeNode current){
+
+	// find the node that we want to delete
+	// and the node above it using piggybacking
+	TreeNode front = root;
+	TreeNode trailer = root;
+
+	// do the piggyback loop
+	// until we either find the node or null
+	// if the key isn't present
+	while (front != null && front.getData() != key ){
+	    if (front.getData() < key){
+		trailer = front;
+		front = front.getRight();
+	    } else {
+		trailer = front;
+		front = front.getLeft();
+	    }//end of if
+	}//end of while
+
+	// if the key wasn't in the tree
+	if (front == null){
+	    return;
+	}
+
+	// if we get here
+	// front points to the node we want to delete
+	// and trailer points to the one above it
+
+	// case 1 -- the node we want to delete is a leaf
+	if (front.getLeft() == null &&
+	    front.getRight() == null) {
+
+	    // repoint front's parent to null
+	} else if (true /* check to see if front has one child */){
+	    // repoint front's parent to front's child
+	} else {
+	    // front has two children
+	    //
+	    // find the node with the largest value
+	    // on fronts left subtree
+	    // and replace front with it.
+	    }
+	
+	}//end of delete
+	
+	
+    //processing in the beginning of the tree
+	private void preorderTraverse(TreeNode current){
 	if (current == null)
 	    return;
 
@@ -44,7 +81,8 @@ public class BSTree {
 	System.out.println();
     } //end of preorderTraverse without node
 
-    private void postorderTraverse(TreeNode current){
+    //processing at the very end of the tree
+	private void postorderTraverse(TreeNode current){
 	if (current == null)
 	    return;
 
@@ -65,7 +103,7 @@ public class BSTree {
 	postorderTraverse(root);
 	System.out.println();
     } //end of postorderTraverse without node
-
+//working in the middle  it gives us a sorted list
     private void inorderTraverse(TreeNode current){
 	if (current == null)
 	    return;
