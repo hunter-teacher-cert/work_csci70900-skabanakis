@@ -7,7 +7,7 @@ public class BSTree {
     public BSTree(){
 	root = null;
     }
-	
+	//collabe with jiyoon and ian on delete
 	public void delete(int key){
 
 	// if the tree is empty, nothing to delete
@@ -44,21 +44,53 @@ public class BSTree {
 	// and trailer points to the one above it
 
 	// case 1 -- the node we want to delete is a leaf
+	//this conditional is making sure it has no children then it is declared as a leaf
 	if (front.getLeft() == null &&
 	    front.getRight() == null) {
+			if(front.getData() < trailer.getData()) {
+				trailer.setLeft(null);
+			} else{
+				trailer.setRight(null);
+			}
+		
+		
+		//case 2: if they have one child 
+	} else if (front.getLeft()== null || front.getRight()== null){
+	    
+		if(front.getData()< trailer.getData()){
+			if(front.getRight()==null){
+				trailer.setLeft(front.getLeft());
+				
+			}else{
+				trailer.setLeft(front.getRight());
+			}
+		}else{
+			if(front.getRight()==null){
+				trailer.setRight(front.getLeft());
+				
+			}else{
+				trailer.setRight(front.getRight());
+			}
+		}
+		//case 3: has 2 children
+	} else{ //2 children
+        //if (root.getData() == key){ //check to see if you're deleting the root to repoint
+        //}
+          TreeNode max = findMax(front.getLeft());
+          //replace front with it
+          this.delete(max.getData());
+          front.setData(max.getData());//premax's child's data!
+      }
+    }
+    private TreeNode findMax(TreeNode start){
+      if (start.getRight()==null){ //base case
+        return start;
+      }
+      return findMax(start.getRight());
+    }
 
-	    // repoint front's parent to null
-	} else if (true /* check to see if front has one child */){
-	    // repoint front's parent to front's child
-	} else {
-	    // front has two children
-	    //
-	    // find the node with the largest value
-	    // on fronts left subtree
-	    // and replace front with it.
-	    }
 	
-	}//end of delete
+
 	
 	
     //processing in the beginning of the tree
