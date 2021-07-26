@@ -26,6 +26,9 @@ public class Driver {
 		t.insert(8);
 		t.insert(3);
 		t.insert(25);
+		t.insert(23);
+		t.insert(2);
+		t.insert(4);
 		
 	
 
@@ -35,6 +38,21 @@ public class Driver {
 		t.postorderTraverse();
 		System.out.println("In-Order Traverse:");
 		t.inorderTraverse();
+		
+		
+		System.out.println("Test case 3, with 2 child");
+		t.delete(5);
+		t.inorderTraverse();
+		t.delete(20);
+		t.inorderTraverse();
+		t.delete(4);
+		t.inorderTraverse();
+		/*
+		System.out.println("Test case 2, with 1 child");
+		t.delete(20);
+		t.inorderTraverse();
+		t.delete(7);
+		t.inorderTraverse();*/
 		
 	}
 }
