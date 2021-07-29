@@ -45,11 +45,12 @@ Before going on the activity,
 
 Lesson Activity:
 ------------------------------------------------------------
-Requirements
+Requirements:
 
-Create a Program to say something that prompts the user to input at least 3 different types of words. 
-Store these words and use them in three different sentences.
-Each sentence must be displayed.
+Create a Program called MadLibs. Use a scanner that prompts the user to input at least 3 different types of words. 
+Store these words in 3 different variables.
+Have the program print/say the three different sentences.
+Each sentence must be displayed on seperate pages, if you are using (hatch/scratch)
 
 
 
